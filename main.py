@@ -5,11 +5,14 @@ from sqlalchemy.orm import Session
 from database import get_db, engine
 from models import Base, User, Product
 from auth import hash_password, verify_password
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
-app.add_middleware(SessionMiddleware, secret_key="schimba_asta_cu_ceva_random")
+app.add_middleware(SessionMiddleware, secret_key=os.getenv("SECRET_KEY"))
 
 
 def get_current_user(request: Request, db: Session = Depends(get_db)):
