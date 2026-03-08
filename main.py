@@ -1,3 +1,7 @@
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 from fastapi import FastAPI, Depends, HTTPException, Request, Form
 from fastapi.responses import HTMLResponse, RedirectResponse
 from starlette.middleware.sessions import SessionMiddleware
@@ -5,9 +9,6 @@ from sqlalchemy.orm import Session
 from database import get_db, engine
 from models import Base, User, Product
 from auth import hash_password, verify_password
-import os
-from dotenv import load_dotenv
-load_dotenv()
 
 Base.metadata.create_all(bind=engine)
 
