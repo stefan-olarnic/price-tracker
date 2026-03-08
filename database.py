@@ -8,7 +8,7 @@ class Base(DeclarativeBase):
 
 
 def get_engine():
-    database_url = os.getenv("DATABASE_URL")
+    database_url = os.getenv("POSTGRES_URL")
     print(f"DATABASE_URL found: {database_url is not None}")
     if not database_url:
         raise ValueError("DATABASE_URL environment variable is not set")
