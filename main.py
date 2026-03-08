@@ -12,8 +12,13 @@ from auth import hash_password, verify_password
 
 Base.metadata.create_all(bind=engine)
 
+secret_key = os.getenv("SECRET_KEY")
+
+if not secret_key:
+    raise ValueError("SECRET_KEY environment variable is not set")
+
 app = FastAPI()
-app.add_middleware(SessionMiddleware, secret_key=os.getenv("SECRET_KEY"))
+app.add_middleware(SessionMiddleware, secret_key=secret_key)
 
 
 def get_current_user(request: Request, db: Session = Depends(get_db)):
