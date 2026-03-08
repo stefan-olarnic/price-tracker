@@ -177,7 +177,8 @@ def dashboard(request: Request, db: Session = Depends(get_db)):
 
             <div class="bg-gray-900 rounded-2xl p-6 border border-gray-800">
                 <h2 class="text-lg font-semibold text-white mb-1">Setari Telegram</h2>
-                <p class="text-gray-400 text-sm mb-4">Chat ID curent: {chat_status}</p>
+                <p class="text-gray-400 text-sm mb-1">Chat ID curent: {chat_status}</p>
+                <p class="text-gray-500 text-xs mb-4">Pentru a obtine Chat ID-ul tau, scrie <span class="text-indigo-400 font-mono">/start</span> la <a href="https://t.me/price_monitor_sv_bot" target="_blank" class="text-indigo-400 hover:underline">@price_monitor_sv_bot</a> pe Telegram.</p>
                 <form method="post" action="/save-chat-id" class="space-y-3">
                     <input type="text" name="chat_id" placeholder="Chat ID Telegram"
                         class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 text-sm" required>
